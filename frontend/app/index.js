@@ -30,3 +30,5 @@ app
   .use(router.allowedMethods());
 
 app.listen(config.server.port);
+
+console.log('Server listening on ' + config.server.port);
