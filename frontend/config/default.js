@@ -6,6 +6,12 @@ module.exports = {
     xResponseTime: true,
     requestsTime: true
   },
+  newRelic: {
+    enabled: false,
+    name: '',
+    key: '',
+    level: 'info'
+  },
   rateLimit: {
     enabled: true,
     duration: 1000 * 60 * 60 * 1,

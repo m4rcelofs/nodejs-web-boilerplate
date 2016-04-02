@@ -4,6 +4,10 @@ const app = module.exports = require('koa')(),
       config = require('config'),
       router = require('./routes');
 
+if(config.newRelic.enabled) {
+  require('newrelic');
+}
+
 if (config.logging.xResponseTime) {
   app.use(require('koa-response-time')());
 }

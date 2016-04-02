@@ -22,7 +22,8 @@
     "koa-logger": "1.3.x",
     "koa-response-time": "1.0.x",
     "koa-router": "5.4.x",
-    "koa-static": "2.0.x"
+    "koa-static": "2.0.x",
+    "newrelic": "*"
   },
   "devDependencies": {
     "chai": "3.5.x",
