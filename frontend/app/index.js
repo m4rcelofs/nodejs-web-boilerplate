@@ -12,7 +12,7 @@ if (config.logging.xResponseTime) {
   app.use(require('koa-response-time')());
 }
 
-app.use(require('koa-static')(__dirname + '/resources'),
+app.use(require('koa-static')(__dirname + '/../resources'),
                               {maxage: config.resources.maxAge});
 
 if (config.logging.requestsTime) {
