@@ -20,6 +20,6 @@ module.exports = {
     max: 500
   },
   server: {
-    port: 3000,
+    port: 3000
   }
 }
