@@ -1,3 +1,4 @@
+import {Button, Colors} from 'react-foundation';
 import uuid from 'node-uuid';
 import React from 'react';
 import Note from './Note.jsx';
@@ -33,7 +34,9 @@ export default class Notes extends React.Component {
     const notes = this.state.notes;
     return (
       <div>
-        <button onClick={this.addNote}>+</button>
+        <Button onClick={this.addNote}
+                color={Colors.SECONDARY}
+                isHollow>+</Button>
         <ul>{notes.map(note =>
           <li key={note.id}>
             <Note

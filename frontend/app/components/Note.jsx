@@ -1,3 +1,4 @@
+import {Button, Colors, Sizes} from 'react-foundation';
 import React from 'react';
 
 export default class Note extends React.Component {
@@ -46,7 +47,10 @@ export default class Note extends React.Component {
   };
 
   renderDelete() {
-    return <button onClick={this.props.onDelete}>x</button>;
+    return <Button onClick={this.props.onDelete}
+                   color={Colors.SECONDARY}
+                   size={Sizes.TINY}
+                   isHollow>x</Button>;
   };
 
   edit() {
