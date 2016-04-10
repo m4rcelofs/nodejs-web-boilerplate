@@ -10,6 +10,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Notes />
+        <img src={require('../resources/marvin.jpg')}></img>
       </div>
     );
   }
