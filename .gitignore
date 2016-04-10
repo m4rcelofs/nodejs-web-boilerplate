@@ -3,3 +3,4 @@ frontend/.idea/workspace.xml
 .idea/
 frontend/build/bundle.js
 backend/node_modules/
+frontend/build/
