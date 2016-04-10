@@ -1,15 +1,75 @@
+import uuid from 'node-uuid';
 import React from 'react';
 import Note from './Note.jsx';
 
-export default ({notes, onEdit, onDelete}) => {
-  return (
-    <ul>{notes.map(note =>
-      <li key={note.id}>
-        <Note
-          task={note.task}
-          onEdit={onEdit.bind(null, note.id)} //same as onEdit={(task) => onEdit(note.id, task)}
-          onDelete={onDelete.bind(null, note.id)} />
-      </li>
-    )}</ul>
-  );
+export default class Notes extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.addNote = this.addNote.bind(this);
+    this.editNote = this.editNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
+
+    this.state = {
+      notes: [
+        {
+          id: uuid.v4(),
+          task: 'Learn Webpack'
+        },
+        {
+          id: uuid.v4(),
+          task: 'Learn React'
+        },
+        {
+          id: uuid.v4(),
+          task: 'Do laundry'
+        }
+      ]
+    };
+  }
+
+  render() {
+    const notes = this.state.notes;
+    return (
+      <div>
+        <button onClick={this.addNote}>+</button>
+        <ul>{notes.map(note =>
+          <li key={note.id}>
+            <Note
+              task={note.task}
+              onEdit={(task) => this.editNote(note.id, task)}
+              onDelete={(task) => this.deleteNote(note.id, task)}/>
+          </li>
+        )}</ul>
+      </div>
+    );
+  }
+
+  addNote() {
+    this.setState({
+      notes: [...this.state.notes, {
+        id: uuid.v4(),
+        task: 'New task'
+      }]
+    });
+  };
+
+  editNote(id, task) {
+    if (!task.trim()) {
+      return;
+    }
+    const notes = this.state.notes;
+    notes
+      .find(note => note.id === id)
+      .task = task;
+    this.setState({notes});
+  };
+
+  deleteNote(id, e) {
+    e.stopPropagation();
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !== id)
+    });
+  };
 }
