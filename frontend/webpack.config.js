@@ -5,6 +5,7 @@ const merge     = require('webpack-merge'),
       webpack   = require('webpack');
 
 const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
@@ -13,6 +14,9 @@ const PATHS = {
 const common = {
   entry: {
     app: PATHS.app
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
   output: {
     path: PATHS.build,
@@ -24,13 +28,18 @@ const common = {
         test: /\.css$/,
         loaders: ['style', 'css'],
         include: PATHS.app
+      },
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel?cacheDirectory'],
+        include: PATHS.app
       }
     ]
   }
 };
 
 const dev = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: PATHS.build,
     historyApiFallback: true,
