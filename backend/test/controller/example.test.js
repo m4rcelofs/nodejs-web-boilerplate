@@ -1,5 +1,5 @@
 var expect = require('chai').expect,
-    controller = require('../.././controller/example');
+    controller = require('../../app/controller/example');
 
 
 describe('Example Controller', function() {

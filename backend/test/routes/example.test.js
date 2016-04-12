@@ -1,4 +1,4 @@
-var app = require('../.././index'),
+var app = require('../../app/index'),
     request = require('supertest').agent(app.listen());
 
 

@@ -2,6 +2,12 @@ box: node:5
 
 build:
   steps:
+
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
   
     - script:
         name: install-packages
@@ -11,26 +17,19 @@ build:
         name: setup node env
         code: |
           export NODE_ENV=production
-          
-    - npm-install:
-        cwd: backend/
-    - npm-test:
-        cwd: backend/
-        
+
     - npm-install:
         cwd: frontend/
     - script:
         name: webpack assets
         cwd: frontend/
         code: |
-          npm production
-        
-    - script:
-        name: echo nodejs information
-        code: |
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
+          npm run production
           
+    - npm-install:
+        cwd: backend/
+    - npm-test:
+        cwd: backend/
           
 push-release:
   steps:
