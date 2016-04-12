@@ -9,26 +9,32 @@ build:
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
   
+    - npm-install:
+        cwd: frontend/
+    - npm-install:
+        cwd: backend/
+
     - script:
-        name: install-packages
-        code: |
-          apt-get update && apt-get upgrade -y
-    - script:
-        name: setup node env
+        name: setup production env
         code: |
           export NODE_ENV=production
-
     - script:
         name: build frontend
         cwd: frontend/
         code: |
-          npm install
           npm run production
-          
-    - npm-install:
-        cwd: backend/
+
+    - script:
+        name: setup test env
+        code: |
+          export NODE_ENV=test
     - npm-test:
         cwd: backend/
+
+    - script:
+        name: setup production env
+        code: |
+          export NODE_ENV=production
           
 push-release:
   steps:
