@@ -12,7 +12,7 @@ build:
     - script:
         name: install-packages
         code: |
-          apt-get update && apt-get upgrade
+          apt-get update && apt-get upgrade -y
     - script:
         name: setup node env
         code: |
