@@ -5,8 +5,8 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app/frontend
 COPY frontend/package.json /usr/src/app/frontend/
 RUN npm install
-RUN npm run production
 COPY frontend /usr/src/app/frontend
+RUN npm run production 
 
 WORKDIR /usr/src/app/backend
 COPY backend/package.json /usr/src/app/backend/
