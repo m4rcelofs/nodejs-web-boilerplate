@@ -12,12 +12,12 @@ build:
         code: |
           export NODE_ENV=production
           
-    - npm-install
+    - npm-install:
         cwd: backend/
-    - npm-test
+    - npm-test:
         cwd: backend/
         
-    - npm-install
+    - npm-install:
         cwd: frontend/
     - script:
         name: webpack assets
