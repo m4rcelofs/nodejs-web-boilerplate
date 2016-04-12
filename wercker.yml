@@ -18,14 +18,11 @@ build:
         code: |
           export NODE_ENV=production
 
-    - npm-install:
-        cwd: frontend/
     - script:
-        name: webpack assets
+        name: build frontend
         cwd: frontend/
         code: |
-          ls
-          ls node_modules
+          npm install
           npm run production
           
     - npm-install:
