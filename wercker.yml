@@ -36,7 +36,7 @@ build:
         code: |
           export NODE_ENV=production
           
-push-release:
+deploy:
   steps:
     - internal/docker-push:
         username: $USERNAME
