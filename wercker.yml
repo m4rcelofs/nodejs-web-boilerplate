@@ -43,5 +43,5 @@ deploy:
         password: $PASSWORD
         repository: marcelofs/nodejs-web-boilerplate
         ports: "3000"
-        cwd: backend/
+        working-dir: $WERCKER_ROOT/backend/
         cmd: npm start
